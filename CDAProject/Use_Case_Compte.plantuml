@@ -1,0 +1,103 @@
+@startuml use Case
+left to right direction
+' skinparam actorStyle awesome
+skinparam linetype ortho
+
+actor Employer as employer2
+actor Candidate as candidate2
+actor Systeme as sys
+actor Systeme as sys2
+actor Systeme as sys3
+actor Systeme as sys4
+actor Guest as guest
+
+usecase "Event Cloturer Compte" as eventcloturercompte2 #PaleGreen
+usecase "Event Mise a Jour" as eventmiseajour2 #PaleGreen
+usecase "Event Consulter" as eventconsulter2 #PaleGreen
+usecase "Event Deconecter" as eventdeconecter2 #PaleGreen
+
+usecase "Aficher Info" as datainfo
+usecase "Aficher Page Index" as aficherhomepage
+usecase "Envoyer Email Confirmation" as emailconfirmation
+usecase "Replacer Info" as replacerinfo 
+
+
+
+
+eventconsulter2--sys
+eventdeconecter2--sys2
+eventcloturercompte2--sys3
+eventmiseajour2--sys4
+
+sys-->datainfo
+datainfo-->candidate2
+datainfo--->employer2
+sys2-->aficherhomepage
+aficherhomepage-->guest
+sys3-->emailconfirmation
+emailconfirmation->candidate2
+emailconfirmation--->employer2
+sys4-->replacerinfo
+replacerinfo-->candidate2
+replacerinfo--->employer2
+
+
+
+
+actor Employer as employer
+actor Candidate as candidate
+
+package Compte{
+usecase "Cloturer Compte" as cloturecompte
+usecase "Mise a Jour" as miseajour
+usecase "Consulter" as consulter
+usecase "Deconecter" as deconecter
+}
+usecase "Event Cloturer Compte" as eventcloturercompte #PaleGreen
+usecase "Event Mise a Jour" as eventmiseajour #PaleGreen
+usecase "Event Consulter" as eventconsulter #PaleGreen
+usecase "Event Deconecter" as eventdeconecter #PaleGreen
+
+
+candidate---cloturecompte #black;line.bold;
+candidate--consulter #black;line.bold;
+candidate--deconecter #black;line.bold;
+candidate--miseajour #black;line.bold;
+employer--cloturecompte #DarkBlue;line.bold;
+employer--consulter #DarkBlue;line.bold;
+employer--deconecter #DarkBlue;line.bold;
+employer--miseajour #DarkBlue;line.bold;
+
+cloturecompte--eventcloturercompte
+miseajour--eventmiseajour
+consulter--eventconsulter
+deconecter--eventdeconecter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
